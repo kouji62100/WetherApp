@@ -1,0 +1,126 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.k2ohashi.testapp.Fragment.SettingFragment">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <!--Sunday-->
+        <LinearLayout
+            android:layout_height="70dp"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:text="日" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_marginLeft="50dp"
+                android:text="9:00"
+                android:textSize="30dp"/>
+
+            <Switch android:id="@+id/sample_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dip"
+                android:checked="true"/>
+
+        </LinearLayout>
+
+        <!--Monday-->
+        <LinearLayout
+            android:layout_height="70dp"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:text="月" />
+
+        </LinearLayout>
+
+        <!--TuesDay-->
+        <LinearLayout
+            android:layout_height="70dp"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:text="火" />
+
+        </LinearLayout>
+
+        <!--WednesDay-->
+        <LinearLayout
+            android:layout_height="70dp"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:text="水" />
+
+        </LinearLayout>
+
+        <!--ThursDay-->
+        <LinearLayout
+            android:layout_height="70dp"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:text="木" />
+
+        </LinearLayout>
+
+        <!--FriDay-->
+        <LinearLayout
+            android:layout_height="70dp"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:text="金" />
+
+        </LinearLayout>
+
+        <!--Saturday-->
+        <LinearLayout
+            android:layout_height="70dp"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:layout_marginLeft="20dp"
+                android:text="土" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
