@@ -19,7 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".Activity.ReceivedActivity" android:process=":remote" />
+
+        <receiver
+            android:name=".Activity.ReceivedActivity"
+            android:process=":remote" />
+
+        <activity
+            android:name=".Activity.AlarmCreateActivity"
+            android:label="@string/title_activity_alarm_create"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

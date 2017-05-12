@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:layout_height="match_parent"
+        android:layout_width="70dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:gravity="bottom|left"
+            android:textSize="40dp"
+            android:text="06:00"/>
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="210dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="SU"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="MO"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="TU"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="WE"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="TH"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="FR"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="SA"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Switch
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_weight="3"
+        android:gravity="center"/>
+
+</LinearLayout>
