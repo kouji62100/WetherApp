@@ -6,8 +6,8 @@ package com.example.k2ohashi.testapp.Fragment;
 public class AlarmModel {
 
     long id;
-    String name;
-    String tweet;
+    String time;
+    boolean alarmSwitch;
     boolean isSunday;
     boolean isMonday;
     boolean isTuesday;
@@ -23,11 +23,18 @@ public class AlarmModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTime() {
+        return time;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public boolean getAlarmSwitch() {
+        return alarmSwitch;
+    }
+    public void setAlarmSwitch(boolean alarmSwitch) {
+        this.alarmSwitch = alarmSwitch;
     }
 
     public boolean getSunday() {
@@ -42,5 +49,40 @@ public class AlarmModel {
     }
     public void setMonday(boolean isMonday) {
         this.isMonday = isMonday;
+    }
+
+    public boolean getTuesday(){
+        return isTuesday;
+    }
+    public void setTuesday(boolean isTuesday){
+        this.isTuesday = isTuesday;
+    }
+
+    public boolean getWednesday(){
+        return isWednesday;
+    }
+    public void setWednesday(boolean isWednesday){
+        this.isWednesday = isWednesday;
+    }
+
+    public boolean getThersday(){
+        return isThersday;
+    }
+    public void setThersday(boolean isThersday){
+        this.isThersday = isThersday;
+    }
+
+    public boolean getFriday(){
+        return isFriday;
+    }
+    public void setFriday(boolean isFriday){
+        this.isFriday = isFriday;
+    }
+
+    public boolean getSataday(){
+        return isSataday;
+    }
+    public void setSataday(boolean isSataday){
+        this.isSataday = isSataday;
     }
 }

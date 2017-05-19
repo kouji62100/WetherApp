@@ -7,6 +7,7 @@
         android:process=":remote" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,6 +29,13 @@
             android:name=".Activity.AlarmCreateActivity"
             android:label="@string/title_activity_alarm_create"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!-- 取得したAPIキーはここに記述　GoogleMapAPI KEY -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBiG6Mv4NrCb3MeZwiRfC3oqUy5KqwPPWM"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
