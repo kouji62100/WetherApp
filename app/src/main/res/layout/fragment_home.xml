@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.k2ohashi.testapp.Fragment.HomeFragment">
+    tools:context=".Ui.Fragment.HomeFragment">
 
     <TextView
         android:layout_marginTop="20dp"
@@ -15,6 +15,7 @@
         android:text="大阪府" />
 
     <TextView
+        android:id="@+id/weather_text"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

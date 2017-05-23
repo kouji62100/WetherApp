@@ -1,26 +1,28 @@
-package com.example.k2ohashi.testapp.Fragment;
+package com.example.k2ohashi.testapp.Ui.Fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
-import com.example.k2ohashi.testapp.Activity.MainActivity;
+import com.example.k2ohashi.testapp.Ui.Activity.MainActivity;
 import com.example.k2ohashi.testapp.R;
 
-public class HomeFragment extends Fragment {
+/**
+ * Created by k2ohashi on 17/05/23.
+ */
+public class WeatherFragment4 extends Fragment {
+    public static final String TAG = "WeatherFragment4";  // Fragment識別用タグ
 
     private FragmentCallBackListener mListener;
 
-    public HomeFragment() {
+    public WeatherFragment4() {
     }
 
-    public static HomeFragment newInstance(){
-        HomeFragment fragment = new HomeFragment();
+    public static WeatherFragment4 newInstance(){
+        WeatherFragment4 fragment = new WeatherFragment4();
         return fragment;
     }
 
@@ -33,13 +35,11 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_weather4, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
-
     }
-
 }

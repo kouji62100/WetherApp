@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="TITLE!">
+        <menu>
+            <item
+                android:id="@+id/menu_item1"
+                android:icon="@android:drawable/ic_menu_my_calendar"
+                android:title="ホーム" />
+            <item
+                android:id="@+id/menu_item2"
+                android:icon="@android:drawable/ic_menu_myplaces"
+                android:title="エリア" />
+            <item
+                android:id="@+id/menu_item3"
+                android:icon="@android:drawable/ic_menu_save"
+                android:title="アラーム" />
+            <item
+                android:id="@+id/menu_item4"
+                android:icon="@android:drawable/ic_menu_delete"
+                android:title="設定" />
+            <item
+                android:id="@+id/menu_item5"
+                android:icon="@android:drawable/ic_menu_delete"
+                android:title="チュートリアル" />
+            <item
+                android:id="@+id/menu_item6"
+                android:icon="@android:drawable/ic_menu_delete"
+                android:title="著作権情報" />
+        </menu>
+    </item>
+</menu>

@@ -1,4 +1,4 @@
-package com.example.k2ohashi.testapp.Fragment;
+package com.example.k2ohashi.testapp.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.k2ohashi.testapp.Model.AlarmModel;
 import com.example.k2ohashi.testapp.R;
 
 import java.util.ArrayList;

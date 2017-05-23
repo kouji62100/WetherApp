@@ -1,9 +1,7 @@
-package com.example.k2ohashi.testapp.Fragment;
+package com.example.k2ohashi.testapp.Ui.Fragment;
 
 
 import android.app.ActivityOptions;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,18 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.k2ohashi.testapp.Activity.AlarmCreateActivity;
-import com.example.k2ohashi.testapp.Activity.MainActivity;
-import com.example.k2ohashi.testapp.Activity.ReceivedActivity;
+import com.example.k2ohashi.testapp.Ui.Activity.AlarmCreateActivity;
+import com.example.k2ohashi.testapp.Ui.Activity.MainActivity;
+import com.example.k2ohashi.testapp.Adapter.AlarmAdapter;
+import com.example.k2ohashi.testapp.Model.AlarmModel;
 import com.example.k2ohashi.testapp.R;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SettingFragment extends Fragment implements View.OnClickListener {
+    public static final String TAG = "SettingFragment";  // Fragment識別用タグ
 
     private FragmentCallBackListener mListener;
 

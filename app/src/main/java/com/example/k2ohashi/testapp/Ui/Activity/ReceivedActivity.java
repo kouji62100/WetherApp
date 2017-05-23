@@ -1,4 +1,4 @@
-package com.example.k2ohashi.testapp.Activity;
+package com.example.k2ohashi.testapp.Ui.Activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
