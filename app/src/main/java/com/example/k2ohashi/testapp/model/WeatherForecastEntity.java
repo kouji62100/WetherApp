@@ -1,11 +1,11 @@
-package com.example.k2ohashi.testapp.Model;
+package com.example.k2ohashi.testapp.model;
 
 import java.util.ArrayList;
 
 /**
  * Created by k2ohashi on 17/05/19.
  */
-public class WeatherEntity {
+public class WeatherForecastEntity {
     public int cod;
     public double message;
     public int cnt;

@@ -1,4 +1,4 @@
-package com.example.k2ohashi.testapp.Ui.Fragment;
+package com.example.k2ohashi.testapp.ui.fragment;
 
 
 import android.content.Context;
@@ -8,22 +8,21 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.k2ohashi.testapp.Model.WeatherModel;
-import com.example.k2ohashi.testapp.Ui.Activity.MainActivity;
-import com.example.k2ohashi.testapp.Adapter.AreaAdapter;
-import com.example.k2ohashi.testapp.Databese.RealmHelper;
+import com.example.k2ohashi.testapp.model.WeatherDataEntity;
+import com.example.k2ohashi.testapp.model.WeatherModel;
+import com.example.k2ohashi.testapp.ui.activity.MainActivity;
+import com.example.k2ohashi.testapp.adapter.AreaAdapter;
+import com.example.k2ohashi.testapp.databese.RealmHelper;
 import com.example.k2ohashi.testapp.OnRecyclerListener;
 import com.example.k2ohashi.testapp.R;
 import com.example.k2ohashi.testapp.WeatherApp;
-import com.example.k2ohashi.testapp.Model.WeatherEntity;
-import com.example.k2ohashi.testapp.WeatherRequest;
+import com.example.k2ohashi.testapp.WeatherDataRequest;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -37,7 +36,7 @@ import java.util.regex.Matcher;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetailFragment extends Fragment implements View.OnClickListener, OnRecyclerListener, WeatherRequest.WeatherRequestResponseListener,Response.ErrorListener{
+public class DetailFragment extends Fragment implements View.OnClickListener, OnRecyclerListener{
     public static final String TAG = "DetailFragment";  // Fragment識別用タグ
 
     private FragmentCallBackListener mListener;
@@ -46,6 +45,8 @@ public class DetailFragment extends Fragment implements View.OnClickListener, On
     private AreaAdapter mAdapter = null;
     private RealmHelper helper;
     private ArrayList<WeatherModel> weatherList;
+
+    private int dataCount = 0;
 
     public DetailFragment() {
     }
@@ -82,18 +83,22 @@ public class DetailFragment extends Fragment implements View.OnClickListener, On
         mRecyclerView = (RecyclerView) getActivity().findViewById(R.id.area_listView);
         // レイアウトマネージャを設定(ここで縦方向の標準リストであることを指定)
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        reloadView();
-
         mAdapter = new AreaAdapter(getContext(),weatherList, this);
         mRecyclerView.setAdapter(mAdapter);
+
+        reloadView();
+    }
+
+    public void updateAdapter(){
+        mAdapter.mData = weatherList;
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onClick(View v) {
         try {
             Intent intent =
-                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                             .setFilter(new AutocompleteFilter.Builder().setCountry("JP").build())
                             .build(getActivity());
             startActivityForResult(intent, 1);
@@ -126,6 +131,8 @@ public class DetailFragment extends Fragment implements View.OnClickListener, On
 
                         reloadView();
 
+//                        mAdapter.notifyDataSetChanged();
+
                     }catch (Exception ignored){}
                 }
                 break;
@@ -137,38 +144,41 @@ public class DetailFragment extends Fragment implements View.OnClickListener, On
     public void reloadView(){
 
         weatherList = new ArrayList<>();
+        helper = new RealmHelper(getContext());
 
         if(helper.getAreaData() == null){
             return;
         }
 
+        dataCount = 0;
+
         for(int i = 0; i < helper.getAreaData().size(); i++){
-
             final WeatherModel model = new WeatherModel();
-
             model.setAreaName(helper.getAreaData().get(i).getAreaName());
+            weatherList.add(model);
+        }
 
+        for(int i = 0; i < weatherList.size(); i++) {
             WeatherApp.get()
                     .getRequestQueue()
-                    .add(WeatherRequest.get(helper.getAreaData().get(i).getLat(),helper.getAreaData().get(i).getLon(),new WeatherRequest.WeatherRequestResponseListener(){
+                    .add(WeatherDataRequest.get(helper.getAreaData().get(i).getLat(),helper.getAreaData().get(i).getLon(),new WeatherDataRequest.WeatherDataRequestResponseListener(){
                         @Override
-                        public void onResponse(WeatherEntity response){
-                            model.setWeather("雨");
-                            model.setTemp("30℃");
+                        public void onResponse(WeatherDataEntity response){
+
+                                weatherList.get(dataCount).setWeather(response.weather.get(0).icon);
+                                double temp = response.main.temp - 273;
+                                weatherList.get(dataCount).setTemp(String.valueOf(temp)+"℃");
+                                dataCount++;
+                                updateAdapter();
                         }
                     },new Response.ErrorListener(){
 
                         @Override
                         public void onErrorResponse(VolleyError response){
 
-                            Log.i("onErrorResponse : ",""+response);
                         }
                     }));
-
-            weatherList.add(model);
         }
-
-        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -176,14 +186,4 @@ public class DetailFragment extends Fragment implements View.OnClickListener, On
         // セルクリック処理
     }
 
-    @Override
-    public void onResponse(WeatherEntity response){
-
-    }
-
-    @Override
-    public void onErrorResponse(VolleyError response){
-
-        Log.i("onErrorResponse : ",""+response);
-    }
 }

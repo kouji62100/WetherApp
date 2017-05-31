@@ -1,4 +1,4 @@
-package com.example.k2ohashi.testapp.Ui.Fragment;
+package com.example.k2ohashi.testapp.ui.fragment;
 
 /**
  * Created by k2ohashi on 17/05/16.

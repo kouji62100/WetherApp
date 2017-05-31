@@ -3,6 +3,7 @@ package com.example.k2ohashi.testapp;
 import android.app.Application;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 /**
@@ -14,6 +15,7 @@ public class WeatherApp extends Application{
     private static WeatherApp sInstance = null;
 
     private RequestQueue requestQueue;
+    private ImageLoader imageLoader;
 
     /**
      * get
@@ -36,5 +38,12 @@ public class WeatherApp extends Application{
             requestQueue = Volley.newRequestQueue(this);
         }
         return requestQueue;
+    }
+
+    public ImageLoader getImageLoader() {
+        if (imageLoader == null) {
+            imageLoader = new ImageLoader(getRequestQueue(), new ImageLruCache());
+        }
+        return imageLoader;
     }
 }

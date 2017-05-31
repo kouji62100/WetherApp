@@ -1,27 +1,28 @@
-package com.example.k2ohashi.testapp.Adapter;
+package com.example.k2ohashi.testapp.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.k2ohashi.testapp.Databese.AreaRealmModel;
-import com.example.k2ohashi.testapp.Model.WeatherModel;
+import com.android.volley.toolbox.ImageLoader;
+import com.example.k2ohashi.testapp.WeatherApp;
+import com.example.k2ohashi.testapp.model.WeatherModel;
 import com.example.k2ohashi.testapp.OnRecyclerListener;
 import com.example.k2ohashi.testapp.R;
 
 import java.util.ArrayList;
-
-import io.realm.RealmResults;
 
 /**
  * Created by k2ohashi on 17/05/22.
  */
 public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
     private LayoutInflater mInflater;
-    private ArrayList<WeatherModel> mData;
+    public ArrayList<WeatherModel> mData;
     private Context mContext;
     private OnRecyclerListener mListener;
 
@@ -42,7 +43,10 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         // データ表示
         if (mData != null && mData.size() > i && mData.get(i) != null) {
-            viewHolder.textView.setText(mData.get(i).getAreaName());
+            viewHolder.areaText.setText(mData.get(i).getAreaName());
+            viewHolder.tempText.setText(mData.get(i).getTemp());
+            String imageUrl = "http://openweathermap.org/img/w/"+mData.get(i).getWeather()+".png";
+            setImageLoader(viewHolder.weatherImage,imageUrl);
         }
 
         // クリック処理
@@ -67,11 +71,35 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
     // ViewHolder(固有ならインナークラスでOK)
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView;
+        TextView areaText;
+        ImageView weatherImage;
+        TextView tempText;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.area_name_text);
+            areaText = (TextView) itemView.findViewById(R.id.area_name_text);
+            weatherImage = (ImageView) itemView.findViewById(R.id.weather_image);
+            tempText = (TextView) itemView.findViewById(R.id.temp_text);
+        }
+    }
+
+    public void setImageLoader(ImageView imageView, String imageUrl) {
+        // 画像
+        if (imageView != null && imageUrl != null) {
+            try {
+                ImageLoader.ImageContainer imageContainer =
+                        (ImageLoader.ImageContainer) imageView.getTag();
+
+                if (imageContainer != null) {
+                    imageContainer.cancelRequest();
+                }
+
+            } catch (ClassCastException ignore) {
+            }
+
+            ImageLoader.ImageListener listener =
+                    ImageLoader.getImageListener(imageView, R.drawable.cast_abc_scrubber_control_off_mtrl_alpha, R.drawable.cast_abc_scrubber_control_off_mtrl_alpha);
+            imageView.setTag(WeatherApp.get().getImageLoader().get(imageUrl, listener));
         }
     }
 }

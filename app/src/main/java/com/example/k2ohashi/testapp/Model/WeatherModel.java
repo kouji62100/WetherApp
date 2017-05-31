@@ -1,4 +1,4 @@
-package com.example.k2ohashi.testapp.Model;
+package com.example.k2ohashi.testapp.model;
 
 /**
  * Created by k2ohashi on 17/05/23.

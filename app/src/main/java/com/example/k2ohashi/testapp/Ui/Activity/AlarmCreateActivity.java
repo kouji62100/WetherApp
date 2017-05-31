@@ -1,4 +1,4 @@
-package com.example.k2ohashi.testapp.Ui.Activity;
+package com.example.k2ohashi.testapp.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

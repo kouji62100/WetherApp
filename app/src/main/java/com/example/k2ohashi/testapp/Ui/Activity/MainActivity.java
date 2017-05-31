@@ -1,4 +1,4 @@
-package com.example.k2ohashi.testapp.Ui.Activity;
+package com.example.k2ohashi.testapp.ui.activity;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -16,25 +16,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.k2ohashi.testapp.Ui.Fragment.DetailFragment;
-import com.example.k2ohashi.testapp.Ui.Fragment.FragmentCallBackListener;
-import com.example.k2ohashi.testapp.Ui.Fragment.HomeFragment;
-import com.example.k2ohashi.testapp.Ui.Fragment.SettingFragment;
-import com.example.k2ohashi.testapp.Ui.Fragment.WeatherFragment1;
-import com.example.k2ohashi.testapp.Ui.Fragment.WeatherFragment2;
-import com.example.k2ohashi.testapp.Ui.Fragment.WeatherFragment3;
-import com.example.k2ohashi.testapp.Ui.Fragment.WeatherFragment4;
-import com.example.k2ohashi.testapp.Ui.Fragment.WeatherFragment5;
+import com.example.k2ohashi.testapp.databese.RealmHelper;
+import com.example.k2ohashi.testapp.ui.fragment.DetailFragment;
+import com.example.k2ohashi.testapp.ui.fragment.FragmentCallBackListener;
+import com.example.k2ohashi.testapp.ui.fragment.HomeFragment;
+import com.example.k2ohashi.testapp.ui.fragment.SettingFragment;
+import com.example.k2ohashi.testapp.ui.fragment.WeatherFragment1;
+import com.example.k2ohashi.testapp.ui.fragment.WeatherFragment2;
+import com.example.k2ohashi.testapp.ui.fragment.WeatherFragment3;
+import com.example.k2ohashi.testapp.ui.fragment.WeatherFragment4;
+import com.example.k2ohashi.testapp.ui.fragment.WeatherFragment5;
 import com.example.k2ohashi.testapp.R;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener,FragmentCallBackListener,NavigationView.OnNavigationItemSelectedListener{
 
     private Fragment tabFragment = null;
-
     private FragmentManager fragmentManager = null;
-
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private RealmHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         setContentView(R.layout.activity_main);
 
         fragmentManager = getSupportFragmentManager();
+        helper = new RealmHelper(getApplicationContext());
 
         /** Toolbar */
         final Toolbar mainBar = (Toolbar)findViewById(R.id.tool_bar);
@@ -67,19 +68,29 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
                 switch (position){
                     case 0:
-                        tabFragment =  WeatherFragment1.newInstance();
+                        if(helper.getAreaData().size() >= 1){
+                            tabFragment =  WeatherFragment1.newInstance();
+                        }
                         break;
                     case 1:
-                        tabFragment =  WeatherFragment2.newInstance();
+                        if(helper.getAreaData().size() >= 2) {
+                            tabFragment =  WeatherFragment2.newInstance();
+                        }
                         break;
                     case 2:
-                        tabFragment =  WeatherFragment3.newInstance();
+                        if(helper.getAreaData().size() >= 3) {
+                            tabFragment =  WeatherFragment3.newInstance();
+                        }
                         break;
                     case 3:
-                        tabFragment =  WeatherFragment4.newInstance();
+                        if(helper.getAreaData().size() >= 4) {
+                            tabFragment =  WeatherFragment4.newInstance();
+                        }
                         break;
                     case 4:
-                        tabFragment =  WeatherFragment5.newInstance();
+                        if(helper.getAreaData().size() >= 5) {
+                            tabFragment =  WeatherFragment5.newInstance();
+                        }
                         break;
                 }
 
@@ -93,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
             @Override
             public int getCount() {
-                return 5;
+                return helper.getAreaData().size();
             }
         };
 

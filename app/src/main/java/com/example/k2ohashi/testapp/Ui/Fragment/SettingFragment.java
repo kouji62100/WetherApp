@@ -1,4 +1,4 @@
-package com.example.k2ohashi.testapp.Ui.Fragment;
+package com.example.k2ohashi.testapp.ui.fragment;
 
 
 import android.app.ActivityOptions;
@@ -12,10 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.k2ohashi.testapp.Ui.Activity.AlarmCreateActivity;
-import com.example.k2ohashi.testapp.Ui.Activity.MainActivity;
-import com.example.k2ohashi.testapp.Adapter.AlarmAdapter;
-import com.example.k2ohashi.testapp.Model.AlarmModel;
+import com.example.k2ohashi.testapp.ui.activity.AlarmCreateActivity;
+import com.example.k2ohashi.testapp.ui.activity.MainActivity;
+import com.example.k2ohashi.testapp.adapter.AlarmAdapter;
+import com.example.k2ohashi.testapp.model.AlarmModel;
 import com.example.k2ohashi.testapp.R;
 
 import java.util.ArrayList;
